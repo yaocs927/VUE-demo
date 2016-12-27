@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VUE 文档学习</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <span v-bind:title="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, voluptas.</span>
+    <p v-if="seen">可以看见</p>
+    <ol>
+      <li v-for="todo in todos">{{ todo.text }}</li>
+    </ol>
+  </div>
+  <script src="js/vue.js"></script>
+  <!--<script src="js/main.js"></script>-->
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: '现在时间为：' + new Date(),
+        seen: true,
+        todos: [{
+          text: 'Learn JavaScript'
+        }, {
+          text: 'Learn Vue'
+        }, {
+          text: 'Build something awesome'
+        }]
+      }
+    });
+  </script>
+</body>
+
+</html>

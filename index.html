@@ -7,31 +7,156 @@
 </head>
 
 <body>
-  <div id="app">
+  <!--<div id="app">
     <p>{{ message }}</p>
     <span v-bind:title="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, voluptas.</span>
     <p v-if="seen">可以看见</p>
     <ol>
       <li v-for="todo in todos">{{ todo.text }}</li>
     </ol>
+    <p>{{ msg }}</p>
+    <button v-on:click="reverseMsg">点击翻转信息</button>
+    <p>{{ msg1 }}</p>
+    <input v-model="msg1">
+    <ol>
+      <todo-item v-bind:todo="todo" v-for="todo in todos"></todo-item>
+    </ol>
+  </div>-->
+  <!--<div id="watch-example">
+    <p>
+      Ask a yes/no question:
+      <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+  </div>-->
+  <!--<div id="cs">
+    <div class="static" v-bind:class="classObject">123
+    </div>
+    <template v-if="loginType === 'userName'">
+      <label>userName</label>
+      <input placeholder="enter username" key="username-input">
+    </template>
+    <template v-else>
+      <label>email</label>
+      <input placeholder="enter email" key="username-input">
+    </template>
+    <input type="button" value="change loginType" @click="changeLoginType">
+  </div>-->
+  <div id="xh">
+    <ul>
+      <li v-for="(value, key, index) in object">{{ key }} : {{ value }} - {{ index }}</li>
+    </ul>
+    <div>
+      <span v-for="n in 10">{{ n }}</span>
+    </div>
   </div>
   <script src="js/vue.js"></script>
-  <!--<script src="js/main.js"></script>-->
+  <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
   <script>
-    var app = new Vue({
-      el: '#app',
+    // var data = {
+    //   message: '现在时间为：' + new Date(),
+    //   seen: true,
+    //   todos: [{
+    //     text: 'Learn JavaScript'
+    //   }, {
+    //     text: 'Learn Vue'
+    //   }, {
+    //     text: 'Build something awesome'
+    //   }],
+    //   msg: 'Hello VUE',
+    //   msg1: 'This is msg1'
+    // };
+    // Vue.component('todo-item', {
+    //   props: ['todo'],
+    //   template: '<li>{{ todo.text }}</li>'
+    // });
+    // var app = new Vue({
+    //   el: '#app',
+    //   data: data,
+    //   methods: {
+    //     reverseMsg: function () {
+    //       console.log(this);
+    //       this.msg = this.msg.split('').reverse().join('');
+    //     }
+    //   },
+    //   created: function () {
+    //     console.log(this.message);
+    //   }
+    // });
+
+    // var watchVM = new Vue({
+    //   el: '#watch-example',
+    //   data: {
+    //     question: '',
+    //     answer: 'I cannot give you an answer until you ask a question!'
+    //   },
+    //   watch: {
+    //     question: function (newQuestion) {
+    //       console.log(newQuestion)
+    //       this.answer = 'Waiting for you to stop typing...';
+    //       this.getAnswer();
+    //     }
+    //   },
+    //   methods: {
+    //     getAnswer: _.debounce(function () {
+    //       console.log(this);
+    //       var vm = this;
+    //       if (this.question.indexOf('?') === -1) {
+    //         vm.answer = 'Questions usually contain a question mask. ;-)';
+    //         return
+    //       }
+    //       vm.answer = 'Thinking...'
+    //       axios.get('http://yesno.wtf/api').then(function (response) {
+    //         vm.answer = _.capitalize(response.data.answer);
+    //       }).catch(function (error) {
+    //         vm.answer = 'Error! Could not reach the API.' + error
+    //       })
+    //     }, 500)
+    //   }
+    // })
+
+    // var cs = new Vue({
+    //   el: '#cs',
+    //   data: {
+    //     isActive: true,
+    //     error: null,
+    //     ok: false,
+    //     loginType: 'userName'
+    //   },
+    //   computed: {
+    //     classObject: function () {
+    //       return {
+    //         active: this.isActive && !this.error,
+    //         'text-danger': this.error && this.error.type === 'fatal'
+    //       }
+    //     }
+    //   },
+    //   methods: {
+    //     changeLoginType: function () {
+    //       console.log(this.ok)
+    //       if (this.ok === false) {
+    //         this.loginType = '';
+    //         this.ok = true
+    //       } else if (this.ok === true) {
+    //         this.loginType = 'userName';
+    //         this.ok = false
+    //       }
+    //       console.log(this.ok)
+    //     }
+    //   }
+    // })
+
+    var xh = new Vue({
+      el: '#xh',
       data: {
-        message: '现在时间为：' + new Date(),
-        seen: true,
-        todos: [{
-          text: 'Learn JavaScript'
-        }, {
-          text: 'Learn Vue'
-        }, {
-          text: 'Build something awesome'
-        }]
+        object: {
+          first: '123',
+          two: '456',
+          age: '25'
+        }
       }
-    });
+    })
   </script>
 </body>
 

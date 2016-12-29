@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>VUE 文档学习</title>
+</head>
+
+<body>
+  <div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    <div>
+      <input v-model="parentMsg" type="text">
+      <br />
+      <child :my-message="parentMsg"></child>
+    </div>
+  </div>
+  <script src="js/vue.js"></script>
+  <script>
+    Vue.component('my-component', {
+      template: '<button @click="{counter += 1}">{{ counter }}</button>',
+      data: function () {
+        return {
+          counter: 0
+        };
+      }
+    });
+
+    Vue.component('child', {
+      props: ['myMessage'],
+      template: '<span>{{ myMessage }}</span>'
+    })
+    // var childComponent = {
+    //   template: '<div>局部注册组件</div>'
+    // }
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        parentMsg: 'This is parent message.'
+      }
+    })
+  </script>
+</body>
+
+</html>
